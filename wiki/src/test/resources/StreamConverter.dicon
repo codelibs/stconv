@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE components PUBLIC "-//SEASAR//DTD S2Container 2.3//EN"
+"http://www.seasar.org/dtd/components23.dtd">
+<components>
+    <component class="org.codelibs.stconv.pipeline.StreamConverterPipeline">
+        <arg>"WikiConverter"</arg>
+        <arg>{
+        ConvertPreValve
+        ,ConvertTableValve
+        ,ConvertBlockQuotationValve
+        }</arg>
+        <!--         
+        ,DeleteContinueValve
+        ,ConvertSuperPreValve
+        ,ConvertCaptionValve
+        ,ConvertDefinitionListValve
+        ,ConvertHttpLinkValve
+        ,ConvertHttpsLinkValve
+        ,ConvertLineBreakValve
+        ,ConvertListValve
+        ,ConvertMoreSmallCaptionValve
+        ,ConvertMailtoLinkValve
+        ,ConvertNonParagraphValve
+        ,ConvertSmallCaptionValve
+        ,ConvertNumberListValve
+        ,ConvertTimeCaptionValve
+         -->
+    </component>
+    <component name="ConvertBlockQuotationValve"
+        class="org.codelibs.stconv.wiki.pipeline.valve.ConvertBlockQuotationValve" />
+    <component name="ConvertCaptionValve"
+        class="org.codelibs.stconv.wiki.pipeline.valve.ConvertCaptionValve" />        
+    <component name="ConvertDefinitionListValve"
+        class="org.codelibs.stconv.wiki.pipeline.valve.ConvertDefinitionListValve" />        
+    <component name="ConvertHttpLinkValve"
+        class="org.codelibs.stconv.wiki.pipeline.valve.ConvertHttpLinkValve" />
+    <component name="ConvertHttpsLinkValve"
+        class="org.codelibs.stconv.wiki.pipeline.valve.ConvertHttpsLinkValve" />
+    <component name="ConvertLineBreakValve"
+        class="org.codelibs.stconv.wiki.pipeline.valve.ConvertLineBreakValve" />
+    <component name="ConvertListValve"
+        class="org.codelibs.stconv.wiki.pipeline.valve.ConvertListValve" />
+    <component name="ConvertMailtoLinkValve"
+        class="org.codelibs.stconv.wiki.pipeline.valve.ConvertMailtoLinkValve" />
+    <component name="ConvertMoreSmallCaptionValve"
+        class="org.codelibs.stconv.wiki.pipeline.valve.ConvertMoreSmallCaptionValve" />
+    <component name="ConvertNonParagraphValve"
+        class="org.codelibs.stconv.wiki.pipeline.valve.ConvertNonParagraphValve" />
+    <component name="ConvertNumberListValve"
+        class="org.codelibs.stconv.wiki.pipeline.valve.ConvertNumberListValve" />
+    <component name="ConvertPreValve"
+        class="org.codelibs.stconv.wiki.pipeline.valve.ConvertPreValve" />
+    <component name="ConvertSmallCaptionValve"
+        class="org.codelibs.stconv.wiki.pipeline.valve.ConvertSmallCaptionValve" />
+    <component name="ConvertSuperPreValve"
+        class="org.codelibs.stconv.wiki.pipeline.valve.ConvertSuperPreValve" />
+    <component name="ConvertTableValve"
+        class="org.codelibs.stconv.wiki.pipeline.valve.ConvertTableValve" />
+    <component name="ConvertTimeCaptionValve"
+        class="org.codelibs.stconv.wiki.pipeline.valve.ConvertTimeCaptionValve" />
+    <component name="DeleteContinueValve"
+        class="org.codelibs.stconv.wiki.pipeline.valve.DeleteContinueValve" />        
+</components>

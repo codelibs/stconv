@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE components PUBLIC "-//SEASAR//DTD S2Container//EN"
+"http://www.seasar.org/dtd/components.dtd">
+<components>
+
+    <component class="org.codelibs.stconv.pipeline.StreamConverterPipeline">
+        <arg>"StringConverter"</arg>
+        <arg>{ToLowerCaseValve,ToUpperCaseValve}</arg>
+    </component>
+
+    <component name="ToUpperCaseValve"
+        class="org.codelibs.stconv.pipeline.valve.impl.ToUpperCaseValve" />
+
+    <component name="ToLowerCaseValve"
+        class="org.codelibs.stconv.pipeline.valve.impl.ToLowerCaseValve" />
+
+</components>

@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.codelibs.stconv</groupId>
+	<artifactId>stconv-project</artifactId>
+	<packaging>pom</packaging>
+	<version>0.3.0-SNAPSHOT</version>
+	<name>Stream Converter Project</name>
+	<url>https://github.com/codelibs/stconv</url>
+	<inceptionYear>2006</inceptionYear>
+	<developers>
+		<developer>
+			<name>Shinsuke Sugaya</name>
+			<id>marevol</id>
+			<email>shinsuke@users.sourceforge.jp</email>
+			<organization />
+		</developer>
+		<developer>
+			<name>Takeharu Yamaguchi</name>
+			<id>takeharu</id>
+			<email>takeharu@users.sourceforge.jp</email>
+			<organization />
+		</developer>
+	</developers>
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	<scm>
+		<connection>https://github.com/codelibs/sastruts-core.git</connection>
+		<developerConnection>https://github.com/codelibs/sastruts-core.git</developerConnection>
+		<url>https://github.com/codelibs/sastruts-core.git</url>
+	</scm>
+	<organization>
+		<name>CodeLibs Project</name>
+		<url>http://www.codelibs.org/</url>
+	</organization>
+	<modules>
+		<module>framework</module>
+		<module>generic</module>
+		<module>hatena</module>
+		<module>wiki</module>
+		<module>sample</module>
+	</modules>
+	<repositories>
+		<repository>
+			<id>maven.seasar.org</id>
+			<name>The Seasar Foundation Maven2 Repository</name>
+			<url>http://maven.seasar.org/maven2/</url>
+		</repository>
+		<repository>
+			<id>maven-snapshot.seasar.org</id>
+			<name>The Seasar Foundation Maven2 Repository</name>
+			<url>http://maven.seasar.org/maven2-snapshot/</url>
+		</repository>
+		<repository>
+			<id>java.net</id>
+			<name>Repository hosting the jee6 artifacts</name>
+			<url>http://download.java.net/maven/2</url>
+		</repository>
+		<repository>
+			<id>fess.sourceforge.jp</id>
+			<name>Fess Repository</name>
+			<url>http://fess.sourceforge.jp/repository/</url>
+		</repository>
+	</repositories>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.seasar.container</groupId>
+				<artifactId>s2-extension</artifactId>
+				<version>2.4.46</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>2.6</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>jcl-over-slf4j</artifactId>
+				<version>1.7.2</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>1.7.2</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-log4j12</artifactId>
+				<version>1.7.2</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+</project>

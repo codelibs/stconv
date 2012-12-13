@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE components PUBLIC "-//SEASAR//DTD S2Container 2.3//EN"
+"http://www.seasar.org/dtd/components23.dtd">
+<components>
+    <component class="org.codelibs.stconv.pipeline.StreamConverterPipeline">
+        <arg>"HatenaConverter"</arg>
+        <arg>{
+        ConvertBlockQuotationValve
+        ,ConvertCaptionValve
+        ,ConvertDefinitionListValve
+        ,ConvertHttpLinkValve
+        ,ConvertHttpsLinkValve
+        ,ConvertLineBreakValve
+        ,ConvertListValve
+        ,ConvertMoreSmallCaptionValve
+        ,ConvertMailtoLinkValve
+        ,ConvertNonParagraphValve
+        ,ConvertSmallCaptionValve
+        ,ConvertNumberListValve
+        ,ConvertTimeCaptionValve
+        ,ConvertTableValve
+        ,ConvertPreValve
+        ,ConvertSuperPreValve
+        ,DeleteContinueValve
+        }</arg>
+        <!-- 
+        
+         -->
+    </component>
+    <component name="ConvertBlockQuotationValve"
+        class="org.codelibs.stconv.hatena.pipeline.valve.ConvertBlockQuotationValve" />
+    <component name="ConvertCaptionValve"
+        class="org.codelibs.stconv.hatena.pipeline.valve.ConvertCaptionValve" />        
+    <component name="ConvertDefinitionListValve"
+        class="org.codelibs.stconv.hatena.pipeline.valve.ConvertDefinitionListValve" />        
+    <component name="ConvertHttpLinkValve"
+        class="org.codelibs.stconv.hatena.pipeline.valve.ConvertHttpLinkValve" />
+    <component name="ConvertHttpsLinkValve"
+        class="org.codelibs.stconv.hatena.pipeline.valve.ConvertHttpsLinkValve" />
+    <component name="ConvertLineBreakValve"
+        class="org.codelibs.stconv.hatena.pipeline.valve.ConvertLineBreakValve" />
+    <component name="ConvertListValve"
+        class="org.codelibs.stconv.hatena.pipeline.valve.ConvertListValve" />
+    <component name="ConvertMailtoLinkValve"
+        class="org.codelibs.stconv.hatena.pipeline.valve.ConvertMailtoLinkValve" />
+    <component name="ConvertMoreSmallCaptionValve"
+        class="org.codelibs.stconv.hatena.pipeline.valve.ConvertMoreSmallCaptionValve" />
+    <component name="ConvertNonParagraphValve"
+        class="org.codelibs.stconv.hatena.pipeline.valve.ConvertNonParagraphValve" />
+    <component name="ConvertNumberListValve"
+        class="org.codelibs.stconv.hatena.pipeline.valve.ConvertNumberListValve" />
+    <component name="ConvertPreValve"
+        class="org.codelibs.stconv.hatena.pipeline.valve.ConvertPreValve" />
+    <component name="ConvertSmallCaptionValve"
+        class="org.codelibs.stconv.hatena.pipeline.valve.ConvertSmallCaptionValve" />
+    <component name="ConvertSuperPreValve"
+        class="org.codelibs.stconv.hatena.pipeline.valve.ConvertSuperPreValve" />
+    <component name="ConvertTableValve"
+        class="org.codelibs.stconv.hatena.pipeline.valve.ConvertTableValve" />
+    <component name="ConvertTimeCaptionValve"
+        class="org.codelibs.stconv.hatena.pipeline.valve.ConvertTimeCaptionValve" />
+    <component name="DeleteContinueValve"
+        class="org.codelibs.stconv.hatena.pipeline.valve.DeleteContinueValve" />        
+</components>
