@@ -25,7 +25,8 @@ public class UnescapeJavaScriptValve implements Valve {
             .getLogger(UnescapeJavaScriptValve.class);
 
     @Override
-    public void invoke(final StreamStorage storage, final ValveContext context) {
+    public StreamStorage invoke(final StreamStorage storage,
+            final ValveContext context) {
         BufferedReader reader = null;
         try {
             reader = new BufferedReader(new InputStreamReader(
@@ -55,7 +56,7 @@ public class UnescapeJavaScriptValve implements Valve {
             throw new PipelineException(e);
         }
 
-        context.invokeNext(storage);
+        return context.invokeNext(storage);
 
     }
 }

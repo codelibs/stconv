@@ -30,7 +30,8 @@ public interface Valve {
      * 
      * @param storage
      * @param context
+     * @return processed storage
      */
-    void invoke(StreamStorage storage, ValveContext context);
+    StreamStorage invoke(StreamStorage storage, ValveContext context);
 
 }

@@ -24,8 +24,8 @@ public class ToLowerCaseValve implements Valve {
             .getLogger(ToLowerCaseValve.class);
 
     @Override
-    public void invoke(final StreamStorage storage, final ValveContext context)
-            throws PipelineException {
+    public StreamStorage invoke(final StreamStorage storage,
+            final ValveContext context) throws PipelineException {
         BufferedReader reader = null;
         try {
             reader = new BufferedReader(new InputStreamReader(
@@ -83,7 +83,7 @@ public class ToLowerCaseValve implements Valve {
 
         }
 
-        context.invokeNext(storage);
+        return context.invokeNext(storage);
 
     }
 }

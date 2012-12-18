@@ -38,8 +38,8 @@ public abstract class AbstractWikiValve implements Valve {
      *      org.codelibs.stconv.pipeline.valve.ValveContext)
      */
     @Override
-    public void invoke(final StreamStorage storage, final ValveContext context)
-            throws PipelineException {
+    public StreamStorage invoke(final StreamStorage storage,
+            final ValveContext context) throws PipelineException {
         BufferedReader reader = null;
         BufferedWriter writer = null;
         final Pattern ptn = Pattern.compile(getPattern());
@@ -80,7 +80,7 @@ public abstract class AbstractWikiValve implements Valve {
             throw new PipelineException(e);
         }
 
-        context.invokeNext(storage);
+        return context.invokeNext(storage);
 
     }
 

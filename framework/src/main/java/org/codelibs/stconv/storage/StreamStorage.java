@@ -32,7 +32,7 @@ public interface StreamStorage {
      * @param in an input stream that you want to convert
      * @param encoding an encoding for the given input stream
      */
-    void init(InputStream in, String encoding);
+    void init(InputStream in);
 
     /**
      * Destroys instances, such as caches, in this class

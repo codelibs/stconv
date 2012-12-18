@@ -58,12 +58,12 @@ public class CallbackStreamStorageImpl implements StreamStorage {
     protected Map<String, Object> metadataMap = new HashMap<String, Object>();
 
     public CallbackStreamStorageImpl(final InputStream in, final String encoding) {
-        init(in, encoding);
+        metadataMap.put(Constants.MKEY_ENCODING, encoding);
+        init(in);
     }
 
     @Override
-    public void init(final InputStream in, final String encoding) {
-        metadataMap.put(Constants.MKEY_ENCODING, encoding);
+    public void init(final InputStream in) {
 
         try {
             // TODO better to wrap BufferredInputStream

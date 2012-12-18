@@ -121,12 +121,12 @@ public class StreamConverterPipeline {
 
     }
 
-    public void invoke(final StreamStorage storage) {
+    public StreamStorage invoke(final StreamStorage storage) {
 
         final Invocation invocation = new Invocation(getValves());
 
         // Invoke the first Valve in this pipeline for this request
-        invocation.invokeNext(storage);
+        return invocation.invokeNext(storage);
     }
 
     protected static final class Invocation implements ValveContext {
@@ -140,12 +140,13 @@ public class StreamConverterPipeline {
         }
 
         @Override
-        public void invokeNext(final StreamStorage storage) {
+        public StreamStorage invokeNext(StreamStorage storage) {
             if (at < valves.length) {
                 final Valve next = valves[at];
                 at++;
-                next.invoke(storage, this);
+                storage = next.invoke(storage, this);
             }
+            return storage;
         }
     }
 

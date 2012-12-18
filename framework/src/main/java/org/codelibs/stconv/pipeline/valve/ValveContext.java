@@ -35,7 +35,8 @@ public interface ValveContext {
      * </p>
      * 
      * @param storage
+     * @return processed storage
      */
-    void invokeNext(StreamStorage storage);
+    StreamStorage invokeNext(StreamStorage storage);
 
 }

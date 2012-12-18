@@ -41,12 +41,12 @@ public class ByteArrayStreamStorageImpl implements StreamStorage {
 
     public ByteArrayStreamStorageImpl(final InputStream in,
             final String encoding) {
-        init(in, encoding);
+        metadataMap.put(Constants.MKEY_ENCODING, encoding);
+        init(in);
     }
 
     @Override
-    public void init(final InputStream in, final String encoding) {
-        metadataMap.put(Constants.MKEY_ENCODING, encoding);
+    public void init(final InputStream in) {
 
         // TODO better to wrap BufferredInputStream
         inputStream = in;
