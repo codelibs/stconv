@@ -26,6 +26,10 @@ public final class Constants {
 
     public static final String MKEY_ENCODING = "encoding";
 
+    public static final String DEFAULT_TMPFILE_PREFIX = "stconv_";
+
+    public static final String DEFAULT_TMPFILE_SUFFIX = ".tmp";
+
     private Constants() {
     }
 }

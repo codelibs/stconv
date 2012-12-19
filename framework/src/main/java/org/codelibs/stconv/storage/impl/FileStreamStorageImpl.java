@@ -25,6 +25,7 @@ import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.io.IOUtils;
 import org.codelibs.stconv.Constants;
 import org.codelibs.stconv.storage.StreamStorage;
 import org.codelibs.stconv.storage.StreamStorageException;
@@ -38,10 +39,6 @@ public class FileStreamStorageImpl implements StreamStorage {
     private static final Logger logger = LoggerFactory
             .getLogger(FileStreamStorageImpl.class);
 
-    protected String DEFAULT_TMPFILE_PREFIX = "STREAMSTORAGE_";
-
-    protected String DEFAULT_TMPFILE_SUFFIX = ".tmp";
-
     protected InputStream inputStream;
 
     protected OutputStream outputStream;
@@ -53,18 +50,18 @@ public class FileStreamStorageImpl implements StreamStorage {
     protected Map<String, Object> metadataMap = new HashMap<String, Object>();
 
     public FileStreamStorageImpl(final InputStream in, final String encoding) {
-        metadataMap.put(Constants.MKEY_ENCODING, encoding);
+        metadataMap.put(Constants.MKEY_ENCODING,
+                encoding == null ? Constants.UTF_8 : encoding);
         init(in);
     }
 
     @Override
     public void init(final InputStream in) {
         try {
-            // TODO better to wrap BufferredInputStream
             inputStream = in;
             previousFile = null;
-            currentFile = File.createTempFile(DEFAULT_TMPFILE_PREFIX,
-                    DEFAULT_TMPFILE_SUFFIX);
+            currentFile = File.createTempFile(Constants.DEFAULT_TMPFILE_PREFIX,
+                    Constants.DEFAULT_TMPFILE_SUFFIX);
             outputStream = new FileOutputStream(currentFile);
         } catch (final FileNotFoundException e) {
             throw new StreamStorageException("Cannot find the temp file: "
@@ -76,11 +73,18 @@ public class FileStreamStorageImpl implements StreamStorage {
 
     @Override
     public void destroy() {
+        if (inputStream != null) {
+            IOUtils.closeQuietly(inputStream);
+        }
         if (previousFile != null && previousFile.isFile()) {
-            previousFile.deleteOnExit();
+            previousFile.delete();
+        }
+
+        if (outputStream != null) {
+            IOUtils.closeQuietly(outputStream);
         }
         if (currentFile != null && currentFile.isFile()) {
-            currentFile.deleteOnExit();
+            currentFile.delete();
         }
     }
 
@@ -101,16 +105,17 @@ public class FileStreamStorageImpl implements StreamStorage {
             }
 
             if (previousFile != null && previousFile.isFile()) {
-                previousFile.deleteOnExit();
+                previousFile.delete();
             }
 
             previousFile = currentFile;
-            currentFile = File.createTempFile(DEFAULT_TMPFILE_PREFIX,
-                    DEFAULT_TMPFILE_SUFFIX);
+            currentFile = File.createTempFile(Constants.DEFAULT_TMPFILE_PREFIX,
+                    Constants.DEFAULT_TMPFILE_SUFFIX);
             inputStream = new FileInputStream(previousFile);
             outputStream = new FileOutputStream(currentFile);
         } catch (final FileNotFoundException e) {
-            throw new StreamStorageException("Cannot find the temp file. ", e);
+            throw new StreamStorageException("Cannot find the temp file: "
+                    + currentFile.getAbsolutePath(), e);
         } catch (final IOException e) {
             throw new StreamStorageException("I/O error occurs. ", e);
         }
@@ -139,7 +144,7 @@ public class FileStreamStorageImpl implements StreamStorage {
             return new FileInputStream(previousFile);
         } catch (final FileNotFoundException e) {
             throw new StreamStorageException("Cannot find the temp file: "
-                    + previousFile.getName(), e);
+                    + previousFile.getAbsolutePath(), e);
         } catch (final IOException e) {
             throw new StreamStorageException("I/O error occurs. ", e);
         }

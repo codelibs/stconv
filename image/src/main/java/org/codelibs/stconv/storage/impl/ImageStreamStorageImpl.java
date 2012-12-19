@@ -30,6 +30,7 @@ import javax.imageio.ImageIO;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
+import org.codelibs.stconv.Constants;
 import org.codelibs.stconv.storage.StreamStorage;
 import org.codelibs.stconv.storage.StreamStorageException;
 
@@ -129,8 +130,8 @@ public class ImageStreamStorageImpl implements StreamStorage {
                 fos = new FileInputStream(resultFile);
                 baseImage = ImageIO.read(fos);
             } catch (FileNotFoundException e) {
-                throw new StreamStorageException("Cannot find the temp file. ",
-                        e);
+                throw new StreamStorageException("Cannot find the temp file: "
+                        + resultFile.getAbsolutePath(), e);
             } catch (IOException e) {
                 throw new StreamStorageException("I/O error occurs. ", e);
             } finally {
@@ -153,11 +154,13 @@ public class ImageStreamStorageImpl implements StreamStorage {
         }
 
         try {
-            resultFile = File.createTempFile("stconv_result_", ".temp");
+            resultFile = File.createTempFile(Constants.DEFAULT_TMPFILE_PREFIX,
+                    Constants.DEFAULT_TMPFILE_SUFFIX);
             resultInputStream = new FileInputStream(resultFile);
             return resultInputStream;
         } catch (FileNotFoundException e) {
-            throw new StreamStorageException("Cannot find the temp file. ", e);
+            throw new StreamStorageException("Cannot find the temp file: "
+                    + resultFile.getAbsolutePath(), e);
         } catch (IOException e) {
             throw new StreamStorageException("I/O error occurs. ", e);
         }
@@ -174,12 +177,14 @@ public class ImageStreamStorageImpl implements StreamStorage {
         }
         FileOutputStream fos = null;
         try {
-            inputFile = File.createTempFile("stconv_input_", ".temp");
+            inputFile = File.createTempFile(Constants.DEFAULT_TMPFILE_PREFIX,
+                    Constants.DEFAULT_TMPFILE_SUFFIX);
             fos = new FileOutputStream(inputFile);
             ImageIO.write(baseImage, formatName, fos);
             fos.flush();
         } catch (FileNotFoundException e) {
-            throw new StreamStorageException("Cannot find the temp file. ", e);
+            throw new StreamStorageException("Cannot find the temp file: "
+                    + inputFile.getAbsolutePath(), e);
         } catch (IOException e) {
             throw new StreamStorageException("I/O error occurs. ", e);
         } finally {
@@ -189,7 +194,8 @@ public class ImageStreamStorageImpl implements StreamStorage {
             inputStream = new FileInputStream(inputFile);
             return inputStream;
         } catch (FileNotFoundException e) {
-            throw new StreamStorageException("Cannot find the temp file. ", e);
+            throw new StreamStorageException("Cannot find the temp file: "
+                    + inputFile.getAbsolutePath(), e);
         }
     }
 
@@ -199,10 +205,12 @@ public class ImageStreamStorageImpl implements StreamStorage {
     @Override
     public OutputStream getOutputStream() {
         try {
-            outputFile = File.createTempFile("stconv_out_", ".temp");
+            outputFile = File.createTempFile(Constants.DEFAULT_TMPFILE_PREFIX,
+                    Constants.DEFAULT_TMPFILE_SUFFIX);
             outputStream = new FileOutputStream(outputFile);
         } catch (FileNotFoundException e) {
-            throw new StreamStorageException("Cannot find the temp file. ", e);
+            throw new StreamStorageException("Cannot find the temp file: "
+                    + outputFile.getAbsolutePath(), e);
         } catch (IOException e) {
             throw new StreamStorageException("I/O error occurs. ", e);
         }
