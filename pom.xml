@@ -44,6 +44,7 @@
 		<module>generic</module>
 		<module>hatena</module>
 		<module>wiki</module>
+		<module>image</module>
 		<module>sample</module>
 	</modules>
 	<repositories>
@@ -74,6 +75,11 @@
 				<groupId>org.seasar.container</groupId>
 				<artifactId>s2-extension</artifactId>
 				<version>2.4.46</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>2.2</version>
 			</dependency>
 			<dependency>
 				<groupId>commons-lang</groupId>
